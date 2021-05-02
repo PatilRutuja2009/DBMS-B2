@@ -1,0 +1,478 @@
+> db.book.insert({"book_isbn":6,"Title":"DBMS","Publisher_Name":"Tata MAcGrowHill","author":{"Name":"Korth","Address":"Pune","Phone_no":[{"Landline":12345,"Mobile":12345678990}]},"Publisher_City":"Baramati","Price":650,"Copy":350})
+> db.book.insert({"book_isbn":7,"Title":"DBMS","Publisher_Name":"Amit","author":{"Name":"Korth","Address":"Pune","Phone_no":[{"Landline":12345,"Mobile":12345678990}]},"Publisher_City":"Baramati","Price":650,"Copy":350})
+> db.book.find().pretty()
+{
+    "_id" : ObjectId("5d883b17f05ad77639472821"),
+    "book_isbn" : 1,
+    "Title" : "DSA",
+    "Publisher_Name" : "Amar",
+    "author" : {
+        "Name" : "Dipak",
+        "Address" : "Pune",
+        "Phone_no" : [
+            {
+                "Landline" : 1234,
+                "Mobile" : 1234567890
+            }
+        ]
+    },
+    "Publisher_City" : "Baramati",
+    "Price" : 400,
+    "Copy" : 200
+}
+{
+    "Copy" : 450,
+    "Price" : 700,
+    "Publisher_City" : "Pune",
+    "Publisher_Name" : "Pearson",
+    "Title" : "DBMS",
+    "_id" : ObjectId("5d883c26f05ad77639472824"),
+    "author" : {
+        "Name" : "Kunal",
+        "Address" : "Nashik",
+        "Phone_no" : [
+            {
+                "Landline" : 45678,
+                "Mobile" : 3847563920
+            }
+        ]
+    },
+    "book_isbn" : 4
+}
+{ "_id" : ObjectId("5d883c74f05ad77639472825"), "Name" : "Amit" }
+{
+    "_id" : ObjectId("5d8991adc6c3fa081b13bff0"),
+    "book_isbn" : 6,
+    "Title" : "DBMS",
+    "Publisher_Name" : "Tata MAcGrowHill",
+    "author" : {
+        "Name" : "Korth",
+        "Address" : "Pune",
+        "Phone_no" : [
+            {
+                "Landline" : 12345,
+                "Mobile" : 12345678990
+            }
+        ]
+    },
+    "Publisher_City" : "Baramati",
+    "Price" : 650,
+    "Copy" : 350
+}
+{
+    "_id" : ObjectId("5d8991d5c6c3fa081b13bff1"),
+    "book_isbn" : 7,
+    "Title" : "DBMS",
+    "Publisher_Name" : "Amit",
+    "author" : {
+        "Name" : "Korth",
+        "Address" : "Pune",
+        "Phone_no" : [
+            {
+                "Landline" : 12345,
+                "Mobile" : 12345678990
+            }
+        ]
+    },
+    "Publisher_City" : "Baramati",
+    "Price" : 650,
+    "Copy" : 350
+}
+> db.book.count()
+5
+> db.book.find({},{"Title":1}).sort({"Title":-1}).pretty()
+{ "_id" : ObjectId("5d883b17f05ad77639472821"), "Title" : "DSA" }
+{ "Title" : "DBMS", "_id" : ObjectId("5d883c26f05ad77639472824") }
+{ "_id" : ObjectId("5d8991adc6c3fa081b13bff0"), "Title" : "DBMS" }
+{ "_id" : ObjectId("5d8991d5c6c3fa081b13bff1"), "Title" : "DBMS" }
+{ "_id" : ObjectId("5d883c74f05ad77639472825") }
+> db.book.find({"Title":"DBMS"}).pretty()
+{
+    "Copy" : 450,
+    "Price" : 700,
+    "Publisher_City" : "Pune",
+    "Publisher_Name" : "Pearson",
+    "Title" : "DBMS",
+    "_id" : ObjectId("5d883c26f05ad77639472824"),
+    "author" : {
+        "Name" : "Kunal",
+        "Address" : "Nashik",
+        "Phone_no" : [
+            {
+                "Landline" : 45678,
+                "Mobile" : 3847563920
+            }
+        ]
+    },
+    "book_isbn" : 4
+}
+{
+    "_id" : ObjectId("5d8991adc6c3fa081b13bff0"),
+    "book_isbn" : 6,
+    "Title" : "DBMS",
+    "Publisher_Name" : "Tata MAcGrowHill",
+    "author" : {
+        "Name" : "Korth",
+        "Address" : "Pune",
+        "Phone_no" : [
+            {
+                "Landline" : 12345,
+                "Mobile" : 12345678990
+            }
+        ]
+    },
+    "Publisher_City" : "Baramati",
+    "Price" : 650,
+    "Copy" : 350
+}
+{
+    "_id" : ObjectId("5d8991d5c6c3fa081b13bff1"),
+    "book_isbn" : 7,
+    "Title" : "DBMS",
+    "Publisher_Name" : "Amit",
+    "author" : {
+        "Name" : "Korth",
+        "Address" : "Pune",
+        "Phone_no" : [
+            {
+                "Landline" : 12345,
+                "Mobile" : 12345678990
+            }
+        ]
+    },
+    "Publisher_City" : "Baramati",
+    "Price" : 650,
+    "Copy" : 350
+}
+> db.book.update({"Publisher_Name":"Tata MAcGrowHill"},{$set:{"Copy":10}})
+> db.book.find().pretty()
+{
+    "_id" : ObjectId("5d883b17f05ad77639472821"),
+    "book_isbn" : 1,
+    "Title" : "DSA",
+    "Publisher_Name" : "Amar",
+    "author" : {
+        "Name" : "Dipak",
+        "Address" : "Pune",
+        "Phone_no" : [
+            {
+                "Landline" : 1234,
+                "Mobile" : 1234567890
+            }
+        ]
+    },
+    "Publisher_City" : "Baramati",
+    "Price" : 400,
+    "Copy" : 200
+}
+{
+    "Copy" : 450,
+    "Price" : 700,
+    "Publisher_City" : "Pune",
+    "Publisher_Name" : "Pearson",
+    "Title" : "DBMS",
+    "_id" : ObjectId("5d883c26f05ad77639472824"),
+    "author" : {
+        "Name" : "Kunal",
+        "Address" : "Nashik",
+        "Phone_no" : [
+            {
+                "Landline" : 45678,
+                "Mobile" : 3847563920
+            }
+        ]
+    },
+    "book_isbn" : 4
+}
+{ "_id" : ObjectId("5d883c74f05ad77639472825"), "Name" : "Amit" }
+{
+    "_id" : ObjectId("5d8991adc6c3fa081b13bff0"),
+    "book_isbn" : 6,
+    "Title" : "DBMS",
+    "Publisher_Name" : "Tata MAcGrowHill",
+    "author" : {
+        "Name" : "Korth",
+        "Address" : "Pune",
+        "Phone_no" : [
+            {
+                "Landline" : 12345,
+                "Mobile" : 12345678990
+            }
+        ]
+    },
+    "Publisher_City" : "Baramati",
+    "Price" : 650,
+    "Copy" : 10
+}
+{
+    "_id" : ObjectId("5d8991d5c6c3fa081b13bff1"),
+    "book_isbn" : 7,
+    "Title" : "DBMS",
+    "Publisher_Name" : "Amit",
+    "author" : {
+        "Name" : "Korth",
+        "Address" : "Pune",
+        "Phone_no" : [
+            {
+                "Landline" : 12345,
+                "Mobile" : 12345678990
+            }
+        ]
+    },
+    "Publisher_City" : "Baramati",
+    "Price" : 650,
+    "Copy" : 350
+}
+> db.book.find({},{"Publisher_Name":1}).sort({"Publisher_Name":1}).pretty()
+{ "_id" : ObjectId("5d883c74f05ad77639472825") }
+{ "_id" : ObjectId("5d883b17f05ad77639472821"), "Publisher_Name" : "Amar" }
+{ "_id" : ObjectId("5d8991d5c6c3fa081b13bff1"), "Publisher_Name" : "Amit" }
+{
+    "Publisher_Name" : "Pearson",
+    "_id" : ObjectId("5d883c26f05ad77639472824")
+}
+{
+    "_id" : ObjectId("5d8991adc6c3fa081b13bff0"),
+    "Publisher_Name" : "Tata MAcGrowHill"
+}
+> db.book.find({},{"Publisher_Name":1}).sort({"Copy":1}).pretty()
+{ "_id" : ObjectId("5d883c74f05ad77639472825") }
+{
+    "_id" : ObjectId("5d8991adc6c3fa081b13bff0"),
+    "Publisher_Name" : "Tata MAcGrowHill"
+}
+{ "_id" : ObjectId("5d883b17f05ad77639472821"), "Publisher_Name" : "Amar" }
+{ "_id" : ObjectId("5d8991d5c6c3fa081b13bff1"), "Publisher_Name" : "Amit" }
+{
+    "Publisher_Name" : "Pearson",
+    "_id" : ObjectId("5d883c26f05ad77639472824")
+}
+> db.book.find({$or:[{"Name":{$gte:"K"}},{"Name":{$lt:"L"}}]}).pretty()
+{ "_id" : ObjectId("5d883c74f05ad77639472825"), "Name" : "Amit" }
+
+> db.book.remove({$or:[{"Name":{$gte:"A"}},{"Name":{$lt:"B"}}]})
+> db.book.find().pretty()
+{
+    "_id" : ObjectId("5d883b17f05ad77639472821"),
+    "book_isbn" : 1,
+    "Title" : "DSA",
+    "Publisher_Name" : "Amar",
+    "author" : {
+        "Name" : "Dipak",
+        "Address" : "Pune",
+        "Phone_no" : [
+            {
+                "Landline" : 1234,
+                "Mobile" : 1234567890
+            }
+        ]
+    },
+    "Publisher_City" : "Baramati",
+    "Price" : 400,
+    "Copy" : 200
+}
+{
+    "Copy" : 450,
+    "Price" : 700,
+    "Publisher_City" : "Pune",
+    "Publisher_Name" : "Pearson",
+    "Title" : "DBMS",
+    "_id" : ObjectId("5d883c26f05ad77639472824"),
+    "author" : {
+        "Name" : "Kunal",
+        "Address" : "Nashik",
+        "Phone_no" : [
+            {
+                "Landline" : 45678,
+                "Mobile" : 3847563920
+            }
+        ]
+    },
+    "book_isbn" : 4
+}
+{
+    "_id" : ObjectId("5d8991adc6c3fa081b13bff0"),
+    "book_isbn" : 6,
+    "Title" : "DBMS",
+    "Publisher_Name" : "Tata MAcGrowHill",
+    "author" : {
+        "Name" : "Korth",
+        "Address" : "Pune",
+        "Phone_no" : [
+            {
+                "Landline" : 12345,
+                "Mobile" : 12345678990
+            }
+        ]
+    },
+    "Publisher_City" : "Baramati",
+    "Price" : 650,
+    "Copy" : 10
+}
+{
+    "_id" : ObjectId("5d8991d5c6c3fa081b13bff1"),
+    "book_isbn" : 7,
+    "Title" : "DBMS",
+    "Publisher_Name" : "Amit",
+    "author" : {
+        "Name" : "Korth",
+        "Address" : "Pune",
+        "Phone_no" : [
+            {
+                "Landline" : 12345,
+                "Mobile" : 12345678990
+            }
+        ]
+    },
+    "Publisher_City" : "Baramati",
+    "Price" : 650,
+    "Copy" : 350
+}
+> db.book.find({$and:[{"author.Name":{$gte:"K"},"author.Name":{$lt:"L"}}]}).pretty()
+{
+    "_id" : ObjectId("5d883b17f05ad77639472821"),
+    "book_isbn" : 1,
+    "Title" : "DSA",
+    "Publisher_Name" : "Amar",
+    "author" : {
+        "Name" : "Dipak",
+        "Address" : "Pune",
+        "Phone_no" : [
+            {
+                "Landline" : 1234,
+                "Mobile" : 1234567890
+            }
+        ]
+    },
+    "Publisher_City" : "Baramati",
+    "Price" : 400,
+    "Copy" : 200
+}
+{
+    "Copy" : 450,
+    "Price" : 700,
+    "Publisher_City" : "Pune",
+    "Publisher_Name" : "Pearson",
+    "Title" : "DBMS",
+    "_id" : ObjectId("5d883c26f05ad77639472824"),
+    "author" : {
+        "Name" : "Kunal",
+        "Address" : "Nashik",
+        "Phone_no" : [
+            {
+                "Landline" : 45678,
+                "Mobile" : 3847563920
+            }
+        ]
+    },
+    "book_isbn" : 4
+}
+{
+    "_id" : ObjectId("5d8991adc6c3fa081b13bff0"),
+    "book_isbn" : 6,
+    "Title" : "DBMS",
+    "Publisher_Name" : "Tata MAcGrowHill",
+    "author" : {
+        "Name" : "Korth",
+        "Address" : "Pune",
+        "Phone_no" : [
+            {
+                "Landline" : 12345,
+                "Mobile" : 12345678990
+            }
+        ]
+    },
+    "Publisher_City" : "Baramati",
+    "Price" : 650,
+    "Copy" : 10
+}
+{
+    "_id" : ObjectId("5d8991d5c6c3fa081b13bff1"),
+    "book_isbn" : 7,
+    "Title" : "DBMS",
+    "Publisher_Name" : "Amit",
+    "author" : {
+        "Name" : "Korth",
+        "Address" : "Pune",
+        "Phone_no" : [
+            {
+                "Landline" : 12345,
+                "Mobile" : 12345678990
+            }
+        ]
+    },
+    "Publisher_City" : "Baramati",
+    "Price" : 650,
+    "Copy" : 350
+}
+> db.book.find({$and:[{"author.Name":{$gte:"K"},"author.Name":{$lt:"L"}}]},{"Publisher_Name":1}).pretty()
+{ "_id" : ObjectId("5d883b17f05ad77639472821"), "Publisher_Name" : "Amar" }
+{
+    "Publisher_Name" : "Pearson",
+    "_id" : ObjectId("5d883c26f05ad77639472824")
+}
+{
+    "_id" : ObjectId("5d8991adc6c3fa081b13bff0"),
+    "Publisher_Name" : "Tata MAcGrowHill"
+}
+{ "_id" : ObjectId("5d8991d5c6c3fa081b13bff1"), "Publisher_Name" : "Amit" }
+> db.book.remove({"author.Name":"Dipak"})
+> db.book.find().pretty()
+{
+    "Copy" : 450,
+    "Price" : 700,
+    "Publisher_City" : "Pune",
+    "Publisher_Name" : "Pearson",
+    "Title" : "DBMS",
+    "_id" : ObjectId("5d883c26f05ad77639472824"),
+    "author" : {
+        "Name" : "Kunal",
+        "Address" : "Nashik",
+        "Phone_no" : [
+            {
+                "Landline" : 45678,
+                "Mobile" : 3847563920
+            }
+        ]
+    },
+    "book_isbn" : 4
+}
+{
+    "_id" : ObjectId("5d8991adc6c3fa081b13bff0"),
+    "book_isbn" : 6,
+    "Title" : "DBMS",
+    "Publisher_Name" : "Tata MAcGrowHill",
+    "author" : {
+        "Name" : "Korth",
+        "Address" : "Pune",
+        "Phone_no" : [
+            {
+                "Landline" : 12345,
+                "Mobile" : 12345678990
+            }
+        ]
+    },
+    "Publisher_City" : "Baramati",
+    "Price" : 650,
+    "Copy" : 10
+}
+{
+    "_id" : ObjectId("5d8991d5c6c3fa081b13bff1"),
+    "book_isbn" : 7,
+    "Title" : "DBMS",
+    "Publisher_Name" : "Amit",
+    "author" : {
+        "Name" : "Korth",
+        "Address" : "Pune",
+        "Phone_no" : [
+            {
+                "Landline" : 12345,
+                "Mobile" : 12345678990
+            }
+        ]
+    },
+    "Publisher_City" : "Baramati",
+    "Price" : 650,
+    "Copy" : 350
+}
+
